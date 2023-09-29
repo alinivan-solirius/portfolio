@@ -22,10 +22,12 @@ public class ItemController {
         return itemService.createItem(item);
     }
 
+    @CrossOrigin
     @GetMapping
     public List<ItemDTO> getAllItems() {
         return itemService.getAllItems();
     }
+
     @PutMapping("{id}")
     public ItemDTO updateItem(@RequestBody Item item, @PathVariable Long id) {
         return itemService.updateItem(id, item);

@@ -36,7 +36,14 @@ public class Item {
             nullable = false,
             columnDefinition = "Text"
     )
+
     private String title;
+    @Column(
+            name="description",
+            nullable = false,
+            columnDefinition = "Text"
+    )
+    private String description;
     @Column(
             name = "url",
             nullable = false,
@@ -46,14 +53,16 @@ public class Item {
 
     public Item() {}
 
-    public Item(String title, String url) {
+    public Item(String title, String description, String url) {
         this.title = title;
+        this.description = description;
         this.url = url;
     }
 
-    public Item(Long id, String title, String url) {
+    public Item(Long id, String title, String description, String url) {
         this.id = id;
         this.title = title;
+        this.description = description;
         this.url = url;
     }
 
@@ -73,6 +82,14 @@ public class Item {
         this.title = title;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public String getUrl() {
         return url;
     }
@@ -86,8 +103,8 @@ public class Item {
         return "Item{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
                 ", url='" + url + '\'' +
                 '}';
     }
-
 }

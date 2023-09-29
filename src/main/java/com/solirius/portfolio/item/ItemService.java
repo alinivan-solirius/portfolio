@@ -39,6 +39,7 @@ public class ItemService {
     public ItemDTO updateItem(Long id, Item item) {
         Item currentItem = itemRepository.findById(id).orElseThrow(EntityNotFoundException::new);
         currentItem.setTitle(item.getTitle());
+        currentItem.setDescription(item.getDescription());
         currentItem.setUrl(item.getUrl());
         Item updatedItem = itemRepository.save(currentItem);
         return itemMapper.mapToDTO(updatedItem);
