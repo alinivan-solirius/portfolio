@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import card_holder_img from "../resources/holder.png";
-import {CardBody, CloseButton} from "react-bootstrap";
+import {CardBody, CloseButton, Modal} from "react-bootstrap";
 import * as Icon from 'react-bootstrap-icons';
 
 
@@ -16,6 +16,14 @@ const Items = () =>{
     const [items, setItems] = useState([]);
     const [error, setError] = useState(null);
     const [loaded, setLoaded] = useState(false);
+
+    const [showDelete, setShowDelete] = useState(false);
+    const [showEdit, setShowEdit] = useState(false);
+
+    const handleCloseDeleteModal = () => setShowDelete(false);
+    const handleShowDeleteModal = () => setShowDelete(true);
+    const handleCloseEditModal = () => setShowEdit(false);
+    const handleShowEditModal = () => setShowEdit(true);
 
     const getItems = () => {
         axios.get('http://localhost:8080/api/item')
@@ -45,12 +53,8 @@ const Items = () =>{
                                     <Card variant="dark" style={{ margin: '0.2rem', backgroundColor: '#1e1e1f' , color: '#d7d7d9'}}>
                                         <Card.Img variant="top" src={card_holder_img}/>
                                         <Card.Body  style={{position:"absolute", top:"0", right:"0"}}>
-                                            <Link to="/">
-                                                <Icon.PencilSquare size={30} color={"#e0b97b"}/>
-                                            </Link>
-                                            <Link to="/">
-                                                <Icon.XCircle size={30} color={"#e6857e"} style={{marginLeft:".5rem"}}/>
-                                            </Link>
+                                            <Icon.PencilSquare onClick={handleShowEditModal} size={30} color={"#e0b97b"}/>
+                                            <Icon.XCircle onClick={handleShowDeleteModal} size={30} color={"#e6857e"} style={{marginLeft:".5rem"}}/>
                                         </Card.Body>
                                         <Card.Body>
 
@@ -67,6 +71,35 @@ const Items = () =>{
                     </div>
                 </div>
             </Container>
+            <Modal show={showDelete} onHide={handleCloseDeleteModal}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Delete item</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Are you sure you want to delete this item?</Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleCloseDeleteModal}>
+                        Close
+                    </Button>
+                    <Button variant="primary" onClick={handleCloseDeleteModal}>
+                        Save Changes
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+
+            <Modal show={showEdit} onHide={handleCloseEditModal}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Update item</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>To be added</Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleCloseEditModal}>
+                        Close
+                    </Button>
+                    <Button variant="primary" onClick={handleCloseEditModal}>
+                        Save Changes
+                    </Button>
+                </Modal.Footer>
+            </Modal>
         </div >
     )
 }
