@@ -7,6 +7,8 @@ import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import card_holder_img from "../resources/holder.png";
+import {CardBody, CloseButton} from "react-bootstrap";
+import * as Icon from 'react-bootstrap-icons';
 
 
 const Items = () =>{
@@ -41,12 +43,21 @@ const Items = () =>{
                             {items.map((item) => (
                                 <Col lg={4} md={6} xs={12} key={item.id}>
                                     <Card variant="dark" style={{ margin: '0.2rem', backgroundColor: '#1e1e1f' , color: '#d7d7d9'}}>
-                                        <Card.Img variant="top" src={card_holder_img} />
+                                        <Card.Img variant="top" src={card_holder_img}/>
+                                        <Card.Body  style={{position:"absolute", top:"0", right:"0"}}>
+                                            <Link to="/">
+                                                <Icon.PencilSquare size={30} color={"#e0b97b"}/>
+                                            </Link>
+                                            <Link to="/">
+                                                <Icon.XCircle size={30} color={"#e6857e"} style={{marginLeft:".5rem"}}/>
+                                            </Link>
+                                        </Card.Body>
                                         <Card.Body>
+
                                             <Card.Title>{item.title}</Card.Title>
                                             <Card.Text style={{ textAlign: 'justify'}}>{item.description.substring(0,155) + ".."}</Card.Text>
                                             <Link to={item.url}>
-                                                <Button variant="dark">View item</Button>
+                                                <Button variant="primary" style={{border:"1px solid #3a3e42"}}>View item</Button>
                                             </Link>
                                         </Card.Body>
                                     </Card>
@@ -56,8 +67,6 @@ const Items = () =>{
                     </div>
                 </div>
             </Container>
-
-
         </div >
     )
 }
