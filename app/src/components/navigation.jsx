@@ -1,8 +1,10 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
+import '../style/navbar.css';
 import Navbar from 'react-bootstrap/Navbar';
 import {Form} from "react-bootstrap";
 import Button from "react-bootstrap/Button";
+import * as Icon from 'react-bootstrap-icons';
 
 function Navigation() {
     return (
@@ -17,22 +19,33 @@ function Navigation() {
                             navbarScroll
                         >
                             <Nav.Link href="/item">
-                                Items
-                            </Nav.Link>
-
-                            <Nav.Link href="/add">
-                                Add
+                                <span className="nav-button">
+                                    <Icon.ListColumns size={20} style={{marginRight:"1rem"}}/>
+                                </span>
                             </Nav.Link>
                         </Nav>
+                        <Nav.Link href="/add">
+                            <span className="nav-button">
+                                <Icon.PlusSquare size={20} style={{marginRight:"1rem"}}/>
+                            </span>
+                        </Nav.Link>
+                        <Nav.Link href="/account">
+                            <span className="nav-button">
+                                <Icon.PersonCircle size={20} style={{marginRight:"1rem"}}/>
+                            </span>
+                        </Nav.Link>
                         <Form className="d-flex">
                             <Form.Control
                                 type="search"
-                                placeholder="Search"
+                                placeholder="Item or user.."
                                 className="me-2"
                                 aria-label="Search"
                             />
-                            <Button variant="dark" style={{border:"1px solid #3a3e42"}}>Search</Button>
+                            <Icon.Search size={20} color={"lightgray"} style={{position:"relative", top:"9", right:"35"}}/>
                         </Form>
+
+
+
                     </Navbar.Collapse>
                 </Container>
             </Navbar>

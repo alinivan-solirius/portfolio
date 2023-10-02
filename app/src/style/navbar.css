@@ -9,35 +9,9 @@
     animation: AnimationName 10s ease infinite;
 }
 
-@-webkit-keyframes AnimationName {
-    0%{background-position:0% 35%}
-    50%{background-position:100% 66%}
-    100%{background-position:0% 35%}
+.nav-button{
+    color: lightgray
 }
-
-@-moz-keyframes AnimationName {
-    0%{background-position:0% 35%}
-    50%{background-position:100% 66%}
-    100%{background-position:0% 35%}
-}
-@keyframes AnimationName {
-    0%{background-position:0% 35%}
-    50%{background-position:100% 66%}
-    100%{background-position:0% 35%}
-}
-
-.searchModal .modal-content{
-    background-color: #A02626;
+.nav-button:hover{
     color: white;
-}
-
-.dropdown-menu.show {
-    background-color: #A02626;
-}
-
-a.dropdown-item {
-    color: white;
-}
-.nav-links:hover {
-    color: red;
 }
