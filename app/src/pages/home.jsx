@@ -23,7 +23,7 @@ const Home = () =>{
                             <h3>Portfolio</h3>
                             <p>A place where you can add your items</p>
                             <Link to="/add">
-                                <Button variant="primary" style={{border:"1px solid #3a3e42", padding: "1rem", margin:"1rem", minWidth:"100px"}}>Build your portfolio</Button>
+                                <Button variant="dark" style={{border:"1px solid #3a3e42", padding: "1rem", margin:"1rem", minWidth:"100px"}}>Build your portfolio</Button>
                             </Link>
                         </Carousel.Caption>
                     </Carousel.Item>
@@ -33,7 +33,7 @@ const Home = () =>{
                             <h3>Your visit card</h3>
                             <p>Whether you are an engineer, artist or service provider you portfolio is your visit card.</p>
                             <Link to="/item">
-                                <Button variant="primary" style={{border:"1px solid #3a3e42", padding: "1rem", margin:"1rem", minWidth:"100px"}}>View portfolios</Button>
+                                <Button variant="dark" style={{border:"1px solid #3a3e42", padding: "1rem", margin:"1rem", minWidth:"100px"}}>View portfolios</Button>
                             </Link>
                         </Carousel.Caption>
                     </Carousel.Item>
@@ -45,7 +45,7 @@ const Home = () =>{
                                 Add, aggregate, maintain and share your portfolio items.
                             </p>
                             <Link to="/item">
-                                <Button variant="primary" style={{border:"1px solid #3a3e42", padding: "1rem", margin:"1rem", minWidth:"100px"}}>Manage portfolio</Button>
+                                <Button variant="dark" style={{border:"1px solid #3a3e42", padding: "1rem", margin:"1rem", minWidth:"100px"}}>Manage portfolio</Button>
                             </Link>
                         </Carousel.Caption>
                     </Carousel.Item>
@@ -58,29 +58,30 @@ const Home = () =>{
                     <div>
                         <Row>
                             <Col lg={4} md={6} xs={12}>
-                                <Image src={card_holder_img}/>
+                                <Image src={card_holder_img} style={{width:"150px", height: "150px", borderRadius:"50%", marginTop: "2rem"}}/>
+                                <h2 style={{margin:"1rem"}}>Website</h2>
+                            </Col>
+                            <Col lg={4} md={6} xs={12}>
+                                <Image src={card_holder_img} style={{width:"150px", height: "150px", borderRadius:"50%", marginTop: "2rem"}}/>
                                 <h2 style={{margin:"1rem"}}>GitHub</h2>
                             </Col>
                             <Col lg={4} md={6} xs={12}>
-                                <Image src={card_holder_img}/>
+                                <Image src={card_holder_img} style={{width:"150px", height: "150px", borderRadius:"50%", marginTop: "2rem"}}/>
                                 <h2 style={{margin:"1rem"}}>GitLab</h2>
                             </Col>
                             <Col lg={4} md={6} xs={12}>
-                               <Image src={card_holder_img}/>
+                               <Image src={card_holder_img} style={{width:"150px", height: "150px", borderRadius:"50%", marginTop: "2rem"}}/>
                                 <h2 style={{margin:"1rem"}}>LinkedIn</h2>
                             </Col>
                             <Col lg={4} md={6} xs={12}>
-                                <Image src={card_holder_img}/>
+                                <Image src={card_holder_img} style={{width:"150px", height: "150px", borderRadius:"50%", marginTop: "2rem"}}/>
                                 <h2 style={{margin:"1rem"}}>Instagram</h2>
                             </Col>
                             <Col lg={4} md={6} xs={12}>
-                                <Image src={card_holder_img}/>
+                                <Image src={card_holder_img} style={{width:"150px", height: "150px", borderRadius:"50%", marginTop: "2rem"}}/>
                                 <h2 style={{margin:"1rem"}}>Facebook</h2>
                             </Col>
-                            <Col lg={4} md={6} xs={12}>
-                                <Image src={card_holder_img}/>
-                                <h2 style={{margin:"1rem"}}>Website</h2>
-                            </Col>
+
                         </Row>
                     </div>
                 </div>

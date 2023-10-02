@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import '../style/items.css';
+import '../style/App.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -53,15 +55,19 @@ const Items = () =>{
                                     <Card variant="dark" style={{ margin: '0.2rem', backgroundColor: '#1e1e1f' , color: '#d7d7d9'}}>
                                         <Card.Img variant="top" src={card_holder_img}/>
                                         <Card.Body  style={{position:"absolute", top:"0", right:"0"}}>
-                                            <Icon.PencilSquare onClick={handleShowEditModal} size={30} color={"#e0b97b"}/>
-                                            <Icon.XCircle onClick={handleShowDeleteModal} size={30} color={"#e6857e"} style={{marginLeft:".5rem"}}/>
+                                            <span className="edit-button">
+                                                <Icon.PencilSquare onClick={handleShowEditModal} size={30}/>
+                                            </span>
+                                            <span className="delete-button">
+                                                 <Icon.XCircle onClick={handleShowDeleteModal} size={30} style={{marginLeft:".5rem"}}/>
+                                            </span>
                                         </Card.Body>
                                         <Card.Body>
-
+                                            <Card.Text style={{ textAlign: 'right'}}>@Username</Card.Text>
                                             <Card.Title>{item.title}</Card.Title>
-                                            <Card.Text style={{ textAlign: 'justify'}}>{item.description.substring(0,155) + ".."}</Card.Text>
+                                            <Card.Text style={{ textAlign: 'justify', paddingTop:"1rem", paddingBottom:"1rem"}}>{item.description.substring(0,155) + ".."}</Card.Text>
                                             <Link to={item.url}>
-                                                <Button variant="primary" style={{border:"1px solid #3a3e42"}}>View item</Button>
+                                                <Button variant="dark" style={{border:"1px solid #3a3e42", padding:"0.7rem"}}>View item</Button>
                                             </Link>
                                         </Card.Body>
                                     </Card>
@@ -71,20 +77,6 @@ const Items = () =>{
                     </div>
                 </div>
             </Container>
-            <Modal show={showDelete} onHide={handleCloseDeleteModal}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Delete item</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>Are you sure you want to delete this item?</Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleCloseDeleteModal}>
-                        Close
-                    </Button>
-                    <Button variant="primary" onClick={handleCloseDeleteModal}>
-                        Save Changes
-                    </Button>
-                </Modal.Footer>
-            </Modal>
 
             <Modal show={showEdit} onHide={handleCloseEditModal}>
                 <Modal.Header closeButton>
@@ -92,14 +84,30 @@ const Items = () =>{
                 </Modal.Header>
                 <Modal.Body>To be added</Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleCloseEditModal}>
+                    <Button variant="light" onClick={handleCloseEditModal}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={handleCloseEditModal}>
-                        Save Changes
+                    <Button variant="dark" onClick={handleCloseEditModal}>
+                        Save changes
                     </Button>
                 </Modal.Footer>
             </Modal>
+
+            <Modal show={showDelete} onHide={handleCloseDeleteModal}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Delete item</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Are you sure you want to delete this item?</Modal.Body>
+                <Modal.Footer>
+                    <Button variant="light" onClick={handleCloseDeleteModal}>
+                        Close
+                    </Button>
+                    <Button variant="dark" onClick={handleCloseDeleteModal}>
+                        Delete
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+
         </div >
     )
 }

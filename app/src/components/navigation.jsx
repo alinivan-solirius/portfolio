@@ -1,5 +1,6 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
+import '../style/navbar.css';
 import Navbar from 'react-bootstrap/Navbar';
 import {Form} from "react-bootstrap";
 import Button from "react-bootstrap/Button";
@@ -18,14 +19,20 @@ function Navigation() {
                             navbarScroll
                         >
                             <Nav.Link href="/item">
-                                <Icon.ListColumns size={20} color={"lightgray"} style={{marginRight:"1rem"}}/>
+                                <span className="nav-button">
+                                    <Icon.ListColumns size={20} style={{marginRight:"1rem"}}/>
+                                </span>
                             </Nav.Link>
                         </Nav>
                         <Nav.Link href="/add">
-                            <Icon.PlusSquare size={20} color={"lightgray"} style={{marginRight:"1rem"}}/>
+                            <span className="nav-button">
+                                <Icon.PlusSquare size={20} style={{marginRight:"1rem"}}/>
+                            </span>
                         </Nav.Link>
                         <Nav.Link href="/account">
-                            <Icon.PersonCircle size={20} color={"lightgray"} style={{marginRight:"1rem"}}/>
+                            <span className="nav-button">
+                                <Icon.PersonCircle size={20} style={{marginRight:"1rem"}}/>
+                            </span>
                         </Nav.Link>
                         <Form className="d-flex">
                             <Form.Control
