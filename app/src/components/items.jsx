@@ -134,7 +134,7 @@ const Items = () =>{
                                 <Button variant="light" onClick={handleCloseDeleteModal}>
                                     Close
                                 </Button>
-                                <Button variant="dark" onClick={deleteItem}>
+                                <Button variant="dark" onClick={deleteItem} style={{padding: "0.8rem"}}>
                                     Delete
                                 </Button>
                             </Modal.Footer>
