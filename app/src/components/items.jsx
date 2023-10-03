@@ -47,7 +47,7 @@ const Items = () =>{
 
     useEffect(() => {
         getItems();
-    }, [deleteItem]);
+    }, []);
 
 
     return (

@@ -36,7 +36,6 @@ public class Item {
             nullable = false,
             columnDefinition = "Text"
     )
-
     private String title;
     @Column(
             name="description",
