@@ -1,18 +1,16 @@
-package com.solirius.portfolio.item;
+package com.solirius.portfolio.image;
 
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Objects;
-
-@Entity(name="item")
+@Entity(name="image")
 @Table(
-        name = "item",
+        name = "image",
         uniqueConstraints = {
                 @UniqueConstraint(
-                        name = "item_url_unique",
+                        name = "image_url_unique",
                         columnNames = "url"
                 )
         }
@@ -20,17 +18,16 @@ import java.util.Objects;
 @Getter
 @Setter
 @Data
-public class Item {
-
+public class Image {
     @Id
     @SequenceGenerator(
-            name = "item_sequence",
-            sequenceName = "item_sequence",
+            name = "image_sequence",
+            sequenceName = "image_sequence",
             allocationSize = 1
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "item_sequence"
+            generator = "image_sequence"
     )
     @Column(
             name = "id",
@@ -44,31 +41,28 @@ public class Item {
     )
     private String title;
     @Column(
-            name="description",
-            nullable = false,
-            columnDefinition = "Text"
-    )
-    private String description;
-    @Column(
             name = "url",
             nullable = false,
             columnDefinition = "Text"
     )
     private String url;
 
-    public Item() {}
+    public Image() {
+    }
 
-    public Item(String title, String description, String url) {
+    public Image(String title, String url) {
         this.title = title;
-        this.description = description;
         this.url = url;
     }
 
-    public Item(Long id, String title, String description, String url) {
+    public Image(Long id, String title, String url) {
         this.id = id;
         this.title = title;
-        this.description = description;
         this.url = url;
+    }
+
+    public void addAttribute(String msg, String s) {
     }
 
 }
+
