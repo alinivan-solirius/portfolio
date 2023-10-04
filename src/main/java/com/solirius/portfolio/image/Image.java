@@ -1,5 +1,6 @@
 package com.solirius.portfolio.image;
 
+import com.solirius.portfolio.item.Item;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
@@ -46,6 +47,9 @@ public class Image {
             columnDefinition = "Text"
     )
     private String url;
+
+    @ManyToOne
+    private Item item;
 
     public Image() {
     }

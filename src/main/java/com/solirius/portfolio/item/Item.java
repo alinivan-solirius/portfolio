@@ -1,10 +1,13 @@
 package com.solirius.portfolio.item;
 
+import com.solirius.portfolio.image.Image;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity(name="item")
@@ -55,6 +58,9 @@ public class Item {
             columnDefinition = "Text"
     )
     private String url;
+
+    @OneToMany(mappedBy = "item")
+    private List<Image> images = new ArrayList<>();
 
     public Item() {}
 
