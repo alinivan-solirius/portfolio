@@ -1,7 +1,13 @@
 package com.solirius.portfolio.item;
 
+import com.solirius.portfolio.image.Image;
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity(name="item")
@@ -14,6 +20,9 @@ import java.util.Objects;
                 )
         }
 )
+@Getter
+@Setter
+@Data
 public class Item {
 
     @Id
@@ -36,7 +45,6 @@ public class Item {
             nullable = false,
             columnDefinition = "Text"
     )
-
     private String title;
     @Column(
             name="description",
@@ -50,6 +58,9 @@ public class Item {
             columnDefinition = "Text"
     )
     private String url;
+
+    @OneToMany(mappedBy = "item")
+    private List<Image> images = new ArrayList<>();
 
     public Item() {}
 
@@ -66,45 +77,4 @@ public class Item {
         this.url = url;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    @Override
-    public String toString() {
-        return "Item{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", url='" + url + '\'' +
-                '}';
-    }
 }
