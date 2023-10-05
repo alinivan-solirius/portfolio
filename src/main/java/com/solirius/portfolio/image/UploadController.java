@@ -25,7 +25,6 @@ public class UploadController {
         Path fileNameAndPath = Paths.get(UPLOAD_DIRECTORY, file.getOriginalFilename());
         fileNames.append(file.getOriginalFilename());
         Files.write(fileNameAndPath, file.getBytes());
-        image.addAttribute("msg", "Uploaded images: " + fileNames.toString());
         return "imageupload/index";
     }
 }

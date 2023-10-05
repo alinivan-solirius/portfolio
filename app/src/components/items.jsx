@@ -15,7 +15,11 @@ import Form from "react-bootstrap/Form";
 
 
 const Items = () =>{
+    const appURL = "http://localhost:3000"
+    const serverURL = "http://localhost:8080"
+    const fileURL = "http://127.0.0.1:8081/"
 
+    const [currentItem, setCurrentItem] = useState([]);
     const [items, setItems] = useState([]);
     const [error, setError] = useState(null);
     const [loaded, setLoaded] = useState(false);
@@ -24,12 +28,19 @@ const Items = () =>{
     const [showEdit, setShowEdit] = useState(false);
 
     const handleCloseEditModal = () => setShowEdit(false);
-    const handleShowEditModal = () => setShowEdit(true);
+    const handleShowEditModal = e => {
+        console.log(e.target);
+        console.log(e.currentTarget);
+        console.log(e.target.getAttribute("title"));
+        setCurrentItem(null);
+        setShowEdit(true);
+
+    }
     const handleCloseDeleteModal = () => setShowDelete(false);
     const handleShowDeleteModal = () => setShowDelete(true);
 
     const getItems = () => {
-        axios.get('http://localhost:8080/api/item')
+        axios.get(serverURL+'/api/item')
             .then((response) => {
                 setLoaded(true);
                 setItems(response.data);
@@ -41,7 +52,6 @@ const Items = () =>{
     }
 
     const deleteItem = (e) => {
-        console.log(e.target);
         handleCloseDeleteModal();
     }
 
@@ -60,17 +70,17 @@ const Items = () =>{
                             {items.map((item, i) => (
                                 <Col lg={4} md={6} xs={12} key={i}>
                                     <Card variant="dark" style={{ margin: '0.2rem', backgroundColor: '#1e1e1f' , color: '#d7d7d9'}}>
-                                        <Card.Img variant="top" src={card_holder_img}/>
+                                        <Card.Img variant="top" src={fileURL+item.images[0].url.split("/").pop()} />
                                         <Card.Body  style={{position:"absolute", top:"0", right:"0"}}>
                                             <span className="edit-button">
-                                                <Icon.PencilSquare onClick={handleShowEditModal} size={30}/>
+                                                <Icon.PencilSquare key={i} title={item.title} url={item.url} description={item.description} onClick={handleShowEditModal} size={30}/>
                                             </span>
                                             <span className="delete-button">
                                                  <Icon.XCircle key={i} onClick={handleShowDeleteModal} size={30} style={{marginLeft:".5rem"}}/>
                                             </span>
                                         </Card.Body>
                                         <Card.Body>
-                                            <Card.Text style={{ textAlign: 'right'}}>@Username</Card.Text>
+                                            <Card.Text style={{ textAlign: 'right'}}>@AlinIvan</Card.Text>
                                             <Card.Title>{item.title}</Card.Title>
                                             <Card.Text style={{ textAlign: 'justify', paddingTop:"1rem", paddingBottom:"1rem"}}>{item.description.substring(0,155) + ".."}</Card.Text>
                                             <Link to={item.url}>
@@ -88,12 +98,13 @@ const Items = () =>{
                             <Modal.Body>
                                 <Form noValidate>
                                     <Row className="mb-3">
+                                        <Card.Img variant="top" src={card_holder_img}/>
                                         <Form.Group as={Col} md="12" controlId="validationCustom01">
                                             <Form.Label style={{fontWeight:"bold"}}>Item title</Form.Label>
                                             <Form.Control  style={{padding:"1rem", marginBottom:"1rem"}}
                                                            required
                                                            type="text"
-                                                           placeholder="Title.."
+                                                           value={"Title"}
                                             />
                                             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                                         </Form.Group>
@@ -102,7 +113,7 @@ const Items = () =>{
                                             <Form.Control  style={{padding:"1rem", marginBottom:"1rem"}}
                                                            required
                                                            type="text"
-                                                           placeholder="URL.."
+                                                           value={"URL"}
                                             />
                                             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                                         </Form.Group>
@@ -110,9 +121,9 @@ const Items = () =>{
                                             <Form.Label  style={{fontWeight:"bold"}}>Description</Form.Label>
                                             <Form.Control style={{padding:"1rem", marginBottom:"1rem"}}
                                                           required
-                                                          as="textarea" rows={10}
+                                                          as="textarea" rows={5}
                                                           type="text"
-                                                          placeholder="Description.."
+                                                          value={"Description"}
                                             />
                                             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                                         </Form.Group>

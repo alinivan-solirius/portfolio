@@ -65,7 +65,11 @@ public class Image {
         this.url = url;
     }
 
-    public void addAttribute(String msg, String s) {
+    public Image(Long id, String title, String url, Item item) {
+        this.id = id;
+        this.title = title;
+        this.url = url;
+        this.item = item;
     }
 
 }

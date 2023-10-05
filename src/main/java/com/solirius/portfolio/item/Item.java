@@ -77,4 +77,12 @@ public class Item {
         this.url = url;
     }
 
+    public Item(Long id, String title, String description, String url, List<Image> images) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.url = url;
+        this.images = images;
+    }
+
 }

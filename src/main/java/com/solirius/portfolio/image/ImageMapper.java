@@ -20,9 +20,6 @@ public class ImageMapper implements Mapper<Image, ImageDTO> {
 
     @Override
     public Image mapFromDTO(ImageDTO dto) {
-        Image image = new Image();
-        image.setTitle(dto.getTitle());
-        image.setUrl(dto.getUrl());
-        return image;
+        return null;
     }
 }

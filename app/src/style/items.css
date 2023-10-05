@@ -1,11 +1,11 @@
 .edit-button{
-    color:#dec6a0;
+    color:lightgray;
 }
 .edit-button:hover{
     color: #db9b35;
 }
 .delete-button{
-    color:#e0aaa6;
+    color:lightgray;
 }
 .delete-button:hover{
     color: #db4439;
