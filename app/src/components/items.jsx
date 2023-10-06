@@ -99,6 +99,10 @@ const Items = () =>{
                                 <Form noValidate>
                                     <Row className="mb-3">
                                         <Card.Img variant="top" src={card_holder_img}/>
+                                        <Form.Group controlId="formFileLg" className="mb-3">
+                                            <Form.Label style={{fontWeight:"bold"}}>Update image</Form.Label>
+                                            <Form.Control type="file" size="lg" />
+                                        </Form.Group>
                                         <Form.Group as={Col} md="12" controlId="validationCustom01">
                                             <Form.Label style={{fontWeight:"bold"}}>Item title</Form.Label>
                                             <Form.Control  style={{padding:"1rem", marginBottom:"1rem"}}
@@ -118,10 +122,10 @@ const Items = () =>{
                                             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                                         </Form.Group>
                                         <Form.Group as={Col} md="12" controlId="exampleForm.ControlTextarea1">
-                                            <Form.Label  style={{fontWeight:"bold"}}>Description</Form.Label>
+                                            <Form.Label  style={{fontWeight:"bold"}}>Update description</Form.Label>
                                             <Form.Control style={{padding:"1rem", marginBottom:"1rem"}}
                                                           required
-                                                          as="textarea" rows={5}
+                                                          as="textarea" rows={4}
                                                           type="text"
                                                           value={"Description"}
                                             />
