@@ -22,7 +22,7 @@ public class UploadController {
 
     @PostMapping("/upload") public String uploadImage(Image image, @RequestParam("image") MultipartFile file) throws IOException {
         StringBuilder fileNames = new StringBuilder();
-        Path fileNameAndPath = Paths.get(UPLOAD_DIRECTORY, file.getOriginalFilename());
+        Path fileNameAndPath = Paths.get(UPLOAD_DIRECTORY+"/items", file.getOriginalFilename());
         fileNames.append(file.getOriginalFilename());
         Files.write(fileNameAndPath, file.getBytes());
         return "imageupload/index";

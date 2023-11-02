@@ -58,7 +58,7 @@ const Add = () =>{
                             <Row className="mb-3">
                                 <Form.Group controlId="formFileLg" className="mb-3">
                                     <Form.Label style={{fontWeight:"bold"}}>Image</Form.Label>
-                                    <Form.Control type="file" size="lg" />
+                                    <Form.Control type="file" size="lg" name="image" accept="image/*" className="form-control-file"/>
                                 </Form.Group>
                                 <Form.Group as={Col} md="6" controlId="validationCustom01">
                                     <Form.Label style={{fontWeight:"bold"}}>Item title</Form.Label>

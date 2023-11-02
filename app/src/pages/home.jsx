@@ -14,10 +14,9 @@ const Home = () => {
     const carouselURL = "http://127.0.0.1:8081/carousel/"
     return (
         <Container>
-
-            <Container style={{width: '100%'}}>
-                <Carousel style={{width: '100%'}}>
-                    <Carousel.Item style={{width: '100%'}}>
+            <Container>
+                <Carousel >
+                    <Carousel.Item>
                         <Image src={carouselURL+'1.png'} fluid style={{objectFit: 'cover'}}/>
                         <Carousel.Caption>
                             <h3>Portfolio</h3>

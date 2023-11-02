@@ -29,15 +29,15 @@ const Items = () =>{
 
     const handleCloseEditModal = () => setShowEdit(false);
     const handleShowEditModal = e => {
-        console.log(e.target);
-        console.log(e.currentTarget);
-        console.log(e.target.getAttribute("title"));
         setCurrentItem(null);
         setShowEdit(true);
 
     }
     const handleCloseDeleteModal = () => setShowDelete(false);
-    const handleShowDeleteModal = () => setShowDelete(true);
+    const handleShowDeleteModal = (e) => {
+        setShowDelete(true)
+        console.log(e)
+    };
 
     const getItems = () => {
         axios.get(serverURL+'/api/item')
@@ -53,6 +53,7 @@ const Items = () =>{
 
     const deleteItem = (e) => {
         handleCloseDeleteModal();
+        console.log(e.target.id);
     }
 
     useEffect(() => {
@@ -69,8 +70,9 @@ const Items = () =>{
                         <Row>
                             {items.map((item, i) => (
                                 <Col lg={4} md={6} xs={12} key={i}>
-                                    <Card variant="dark" style={{ margin: '0.2rem', backgroundColor: '#1e1e1f' , color: '#d7d7d9'}}>
+                                    <Card key={i} variant="dark" style={{ margin: '0.2rem', backgroundColor: '#1e1e1f' , color: '#d7d7d9'}}>
                                         <Card.Img variant="top" src={fileURL+item.images[0].url.split("/").pop()} />
+                                        {console.log(fileURL+item.images[0].url.split("/").pop())}
                                         <Card.Body  style={{position:"absolute", top:"0", right:"0"}}>
                                             <span className="edit-button">
                                                 <Icon.PencilSquare key={i} title={item.title} url={item.url} description={item.description} onClick={handleShowEditModal} size={30}/>
@@ -135,7 +137,7 @@ const Items = () =>{
                                 </Form>
                             </Modal.Body>
                             <Modal.Footer>
-                                <Button variant="light" onClick={handleCloseEditModal}>Close</Button>
+                                <Button variant="light" onClick={handleCloseEditModal}>Cancel</Button>
                                 <Button variant="dark" onClick={handleCloseEditModal} style={{padding: "0.8rem"}} type="submit">Save changes</Button>
                             </Modal.Footer>
                         </Modal>
@@ -147,7 +149,7 @@ const Items = () =>{
                             <Modal.Body>Are you sure you want to delete this item?</Modal.Body>
                             <Modal.Footer>
                                 <Button variant="light" onClick={handleCloseDeleteModal}>
-                                    Close
+                                    Cancel
                                 </Button>
                                 <Button variant="dark" onClick={deleteItem} style={{padding: "0.8rem"}}>
                                     Delete

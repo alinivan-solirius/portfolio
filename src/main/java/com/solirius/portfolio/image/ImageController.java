@@ -1,8 +1,5 @@
 package com.solirius.portfolio.image;
 
-import com.solirius.portfolio.item.Item;
-import com.solirius.portfolio.item.ItemDTO;
-import com.solirius.portfolio.item.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
