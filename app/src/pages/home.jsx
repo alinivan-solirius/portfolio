@@ -2,23 +2,23 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
-import one from "../resources/1.png";
-import two from "../resources/2.png";
-import three from "../resources/3.png";
 import {Link} from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
 import {Carousel, CloseButton} from "react-bootstrap";
 import card_holder_img from "../resources/holder.png";
 
-const Home = () =>{
+const Home = () => {
+    const sources = ['Web', 'GitHub', 'GitLab', 'LinekdIn', 'Instagram', 'Facebook']
+    const fileURL = "http://127.0.0.1:8081/sources/"
+    const carouselURL = "http://127.0.0.1:8081/carousel/"
     return (
         <Container>
 
-            <Container>
-                <Carousel>
-                    <Carousel.Item>
-                        <Image src={one} fluid/>
+            <Container style={{width: '100%'}}>
+                <Carousel style={{width: '100%'}}>
+                    <Carousel.Item style={{width: '100%'}}>
+                        <Image src={carouselURL+'1.png'} fluid style={{objectFit: 'cover'}}/>
                         <Carousel.Caption>
                             <h3>Portfolio</h3>
                             <p>A place where you can add your items</p>
@@ -28,7 +28,7 @@ const Home = () =>{
                         </Carousel.Caption>
                     </Carousel.Item>
                     <Carousel.Item>
-                        <Image src={two} fluid/>
+                        <Image src={carouselURL+'2.png'} fluid style={{objectFit: 'cover'}}/>
                         <Carousel.Caption>
                             <h3>Your visit card</h3>
                             <p>Whether you are an engineer, artist or service provider you portfolio is your visit card.</p>
@@ -38,7 +38,7 @@ const Home = () =>{
                         </Carousel.Caption>
                     </Carousel.Item>
                     <Carousel.Item>
-                        <Image src={three} fluid/>
+                        <Image src={carouselURL+'3.png'} fluid style={{objectFit: 'cover'}}/>
                         <Carousel.Caption>
                             <h3>Versatile</h3>
                             <p>
@@ -54,39 +54,21 @@ const Home = () =>{
 
             <Container>
                 <div className="bgBlur" style={{textAlign:"center"}}>
-                    <h1 className='landing-text'style = {{padding:'50px'}}>Available sources </h1>
+                    <h1 className='landing-text'style = {{padding:'50px'}}>Sources </h1>
                     <div>
                         <Row>
-                            <Col lg={4} md={6} xs={12}>
-                                <Image src={card_holder_img} style={{width:"150px", height: "150px", borderRadius:"50%", marginTop: "2rem"}}/>
-                                <h2 style={{margin:"1rem"}}>Website</h2>
+                            {
+                                sources.map((src, i) => (
+                                 <Col lg={4} md={6} xs={12}>
+                                <Image src={fileURL+'img'+i+'.png'} style={{width:"150px", height: "150px", borderRadius:"50%", marginTop: "2rem", objectFit: 'cover'}}/>
+                                <h2 style={{margin:"1rem"}}>{src}</h2>
                             </Col>
-                            <Col lg={4} md={6} xs={12}>
-                                <Image src={card_holder_img} style={{width:"150px", height: "150px", borderRadius:"50%", marginTop: "2rem"}}/>
-                                <h2 style={{margin:"1rem"}}>GitHub</h2>
-                            </Col>
-                            <Col lg={4} md={6} xs={12}>
-                                <Image src={card_holder_img} style={{width:"150px", height: "150px", borderRadius:"50%", marginTop: "2rem"}}/>
-                                <h2 style={{margin:"1rem"}}>GitLab</h2>
-                            </Col>
-                            <Col lg={4} md={6} xs={12}>
-                               <Image src={card_holder_img} style={{width:"150px", height: "150px", borderRadius:"50%", marginTop: "2rem"}}/>
-                                <h2 style={{margin:"1rem"}}>LinkedIn</h2>
-                            </Col>
-                            <Col lg={4} md={6} xs={12}>
-                                <Image src={card_holder_img} style={{width:"150px", height: "150px", borderRadius:"50%", marginTop: "2rem"}}/>
-                                <h2 style={{margin:"1rem"}}>Instagram</h2>
-                            </Col>
-                            <Col lg={4} md={6} xs={12}>
-                                <Image src={card_holder_img} style={{width:"150px", height: "150px", borderRadius:"50%", marginTop: "2rem"}}/>
-                                <h2 style={{margin:"1rem"}}>Facebook</h2>
-                            </Col>
-
+                                ))
+                            }
                         </Row>
                     </div>
                 </div>
             </Container>
-
         </Container>
     )
 }

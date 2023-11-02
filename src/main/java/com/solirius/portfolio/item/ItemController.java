@@ -28,6 +28,7 @@ public class ItemController {
         return itemService.getAllItems();
     }
 
+    @CrossOrigin
     @PutMapping("{id}")
     public ItemDTO updateItem(@RequestBody Item item, @PathVariable Long id) {
         return itemService.updateItem(id, item);

@@ -17,7 +17,7 @@ import Form from "react-bootstrap/Form";
 const Items = () =>{
     const appURL = "http://localhost:3000"
     const serverURL = "http://localhost:8080"
-    const fileURL = "http://127.0.0.1:8081/"
+    const fileURL = "http://127.0.0.1:8081/items/"
 
     const [currentItem, setCurrentItem] = useState([]);
     const [items, setItems] = useState([]);
